@@ -1,12 +1,12 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
-  name: "cooperation-form",
-  initialState: [],
-  reducers: {
-    getInfo: (state, action) => {
-      state.push(action.payload);
-    }
+  // name: "cooperation-form",
+  // initialState: [],
+  // reducers: {
+  //   getInfo: (state, action) => {
+  //     state.push(action.payload);
+  //   }
     // validateField(fieldName, value) {
     //   let fieldValidationErrors = this.state.formErrors;
     //   let nameValid = this.state.nameValid;
@@ -83,24 +83,8 @@ const userSlice = createSlice({
   }
 });
 
-export const { incremented, decremented } = userSlice.actions;
+// export const { incremented, decremented } = userSlice.actions;
 
 const store = configureStore({
   reducer: userSlice.reducer
 });
-
-// Can still subscribe to the store
-store.subscribe(() => console.log(store.getState()));
-
-// Still pass action objects to `dispatch`, but they're created for us
-store.dispatch(incremented());
-// {value: 1}
-store.dispatch(incremented());
-// {value: 2}
-store.dispatch(decremented());
-// {value: 1}
-
-// const FormReducers = (state = initialState, action) => {};
-
-// const store = createStore();
-// export default store;

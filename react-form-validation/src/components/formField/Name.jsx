@@ -9,8 +9,8 @@ const Name = () => {
     valueChangeHandler: NameChangeHandler,
     inputBlurHandler: NameBlurHandler
   } = UserInput((value) => value.trim() !== "");
-  console.log(NameInputHasError);
-  if (enteredNameIsValid) {
+  if (enteredName.match(/^[a-zA-Z]+ [a-zA-Z]+$/ || /^[\u0600-\u06FF\s]+$/)) {
+    return enteredNameIsValid;
   }
   return (
     <div className="form-group">
@@ -26,7 +26,7 @@ const Name = () => {
         onChange={NameChangeHandler}
       />
       {NameInputHasError && (
-        <p className="formErrors"> "نام وارد شده نامعتبر است."</p>
+        <p className="formErrors"> نام وارد شده نامعتبر است.</p>
       )}
     </div>
   );

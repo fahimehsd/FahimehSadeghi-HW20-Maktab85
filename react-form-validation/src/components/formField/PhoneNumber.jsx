@@ -1,5 +1,16 @@
 import React from "react";
+import UserInput from "../../hooks/user-input";
 const PhoneNumber = () => {
+  const {
+    value: enteredPhoneNumber,
+    isValid: enteredPhoneNumberIsValid,
+    hasError: PhoneNumberInputHasError,
+    valueChangeHandler: PhoneNumberChangeHandler,
+    inputBlurHandler: PhoneNumberBlurHandler
+  } = UserInput((value) => value.trim() !== "");
+  if (enteredPhoneNumber.startsWith("09")) {
+    return enteredPhoneNumberIsValid;
+  }
   return (
     <div className="form-group">
       <label htmlFor="phoneNumber">شماره تماس *</label>
@@ -9,12 +20,15 @@ const PhoneNumber = () => {
         name="phoneNumber"
         className="form-control"
         placeholder="09"
-        // value={"number"}
-        // onChange={(event) => this.handleUserInput(event)}
+        minLength={11}
+        maxLength={11}
+        value={enteredPhoneNumber}
+        onBlur={PhoneNumberBlurHandler}
+        onChange={PhoneNumberChangeHandler}
       />
-      {/* <div className="panel panel-default">
-        <FormErrors formErrors={this.state.formErrors.phoneNumber} />
-      </div> */}
+      {PhoneNumberInputHasError && (
+        <p className="formErrors"> شماره تماس وارد شده نامعتبر است.</p>
+      )}
     </div>
   );
 };

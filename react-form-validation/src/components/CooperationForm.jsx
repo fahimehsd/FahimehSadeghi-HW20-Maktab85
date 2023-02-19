@@ -13,6 +13,7 @@ const CooperationForm = () => {
       <CooperationPosition />
       <PhoneNumber />
       <Resume />
+      <button type="submit">ارسال درخواست</button>
     </form>
   );
 };
